@@ -3,33 +3,32 @@ class Earning:
     # variable assignment
     def __init__(self, seed_price: int, days_to_mature: int,  Profit_margin: int = 100, days: int = 28, number_of_crops: int = 1):
         # Error Rising For Wrong Value Types
-        if seed_price != int or seed_price < 0:
-            raise ValueError("Seed Price must be a number and not negative")
+        if seed_price < 0:
+            raise ValueError("Seed Price must not be negative")
 
-        if days_to_mature != int or days_to_mature < 0:
-            raise ValueError("Maturity days must be a number and not negative")
+        if days_to_mature < 0:
+            raise ValueError("Maturity days mand not be negative")
 
-        if number_of_crops != int or number_of_crops < 0:
-            raise ValueError("Number of crops must be a number and not negative")
+        if number_of_crops < 0:
+            raise ValueError("Number of crops mand not be negative")
 
         # Raw Variable Assignment
-        self.value = int(seed_price)
-        self.crops = int(number_of_crops)
-        self.mdays = int(days_to_mature) - 1
-        self.duration = int(days)
-        self.profit_margin = int(Profit_margin)
+        self.value = seed_price
+        self.crops = number_of_crops
+        self.mdays = days_to_mature - 1
+        self.duration = days
+        self.profit_margin = Profit_margin
 
         # Profit Margin Calculation
-        if self.profit_margin == int:
-            self.margin = (self.profit_margin * 1 / 100) + 1
-        elif self.profit_margin != int or self.profit_margin < 0:
-            raise ValueError("The profit margin must be a number and not negative")
+        if self.profit_margin < 0:
+            raise ValueError("The profit margin must not be negative")
+        self.margin = (self.profit_margin * 1 / 100) + 1
 
         # ---Single Crop Profit---
         if self.duration < self.mdays or self.duration < 0:
-            raise ValueError("The number of growing days must be grater than maturity time of the crop and not negative")
-        else:
-            self.sell_price = self.value * self.margin
+            raise ValueError("The number of growing days must be grater than maturity time of the crop and negative")
+        self.sell_price = self.value * self.margin
+        
 
         self.max_harvest = self.mdays // self.duration
         self.minimum_profit_per_crop = ((self.max_harvest * self.sell_price) - self.value)
@@ -45,26 +44,19 @@ class Earning:
 
         # ---Multiple Crop Profit---
         self.multiple_profit = self.minimum_profit_in_duration * self.crops
-
-    # profit calculation on sell
-    def single_crop_profit(self):
-
-        return self.minimum_profit_per_crop
-
-    def duration_profit(self):
-
-        return self.minimum_profit_in_duration
-
-    def multiple_crop_profit(self):
-
-        return self.multiple_profit
+        
+        # --- Printing The Info ---
+        print(f"""Minimum profit per crop: {self.sell_price}\n
+                  Minimum profit in a duration: {self.minimum_profit_in_duration}\n
+                  Multiple crop profit: {self.multiple_profit}""")
+        # profit calculation on sell
 
     @staticmethod
     def results():
         info = Earning()
-        print(f"""The minimum profit per crop is {info.single_crop_profit}Gs. \n
-                  The minimum profit during thr span of {info.duration} days is about {info.duration_profit}. \n
-                  The minimum profit for multiple crops({info.crops}) in a duration of {info.duration} days is about {info.multiple_crop_profit}Gs""")
+        print(f"""The minimum profit per crop is {info.sell_price}Gs. \n
+                  The minimum profit during the span of {info.duration} days is about {info.minimum_profit_in_duration}. \n
+                  The minimum profit for multiple crops({info.crops}) in a duration of {info.duration} days is about {info.multiple_profit}Gs""")
 
     @staticmethod
     def show_info():
