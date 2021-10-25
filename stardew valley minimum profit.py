@@ -45,36 +45,33 @@ class Earning:
         # ---Multiple Crop Profit---
         self.multiple_profit = self.minimum_profit_in_duration * self.crops
         
-        # --- Printing The Info ---
+        # --- Printing The Info After Initiation---
+        
         print(f"""Minimum profit per crop: {self.sell_price}\n
                   Minimum profit in a duration: {self.minimum_profit_in_duration}\n
                   Multiple crop profit: {self.multiple_profit}""")
         # profit calculation on sell
 
-    @staticmethod
-    def results():
-        info = Earning()
-        print(f"""The minimum profit per crop is {info.sell_price}Gs. \n
-                  The minimum profit during the span of {info.duration} days is about {info.minimum_profit_in_duration}. \n
-                  The minimum profit for multiple crops({info.crops}) in a duration of {info.duration} days is about {info.multiple_profit}Gs""")
+    def results(self):
+        print(f"""The minimum profit per crop is {self.sell_price}Gs. \n
+                  The minimum profit during the span of {self.duration} days is about {self.minimum_profit_in_duration}. \n
+                  The minimum profit for multiple crops({self.crops}) in a duration of {self.duration} days is about {self.multiple_profit}Gs""")
 
-    @staticmethod
-    def show_info():
-        info = Earning()
+    def show_info(self):
         print(f"""
-                  Seed price: {info.value}\n
-                  Maturity days of the crop is: {info.mdays}\n
-                  Profit margin percentage is: %{info.profit_margin}. (the crop's sell price will multiply by {info.margin}*)\n
-                  The maximum harvests per month(or entered duration) is {info.max_harvest} times.\n
+                  Seed price: {self.value}\n
+                  Maturity days of the crop is: {self.mdays}\n
+                  Profit margin percentage is: %{self.profit_margin}. (the crop's sell price will multiply by {self.margin}*)\n
+                  The maximum harvests per month(or entered duration) is {self.max_harvest} times.\n
                """)
-
+        
     @staticmethod
     def show_formulas():
         print("""
               single crop profit: (max harvest * sell price) - seed price\n
               profit for a duration of days: ((max harvest * sell price) - seed price) // duration\n
               """)
-
+        
     @staticmethod
     def help():
         print("""
