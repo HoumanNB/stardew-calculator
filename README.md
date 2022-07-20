@@ -1,4 +1,4 @@
-#This projects is a practice for OOP and Classes in python
+# This projects is a practice for OOP and Classes in python
 
 # _stardew-calculator_
 
