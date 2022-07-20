@@ -25,15 +25,6 @@ These following features are not yet implemented in the code, but will be in nea
 this application is programmed entirly in python language, And the future GUI will be too.
 as the developement moves on, i may decide to make a webapp out of it but as of now no decision is final.
 
-## Contribution 
-
-This is a privet project developed by myself, HoumanNB. 
-If you are reading this, then *congrats!*. if you have any submissions, feel free to do so. I will review them as soon as i can.
-Also, if you are eager to be a teammate of mine, dont hesitate to ask! 
-# Current Contributers:
-
-- HoumanNB
-
 ## Licence
 
 MIT
