@@ -1,6 +1,9 @@
+#This projects is a practice for OOP and Classes in python
+
 # _stardew-calculator_
 
 This aplication can calculate probable profit for a crop based on its seed price.
+This projects is a practice for OOP and Classes in python
 
 ## Overall functions
 
